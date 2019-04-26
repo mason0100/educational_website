@@ -11,6 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <title>Maryland Department of Education Math, Parks, and a game.</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="socialmedia.css">
     <!-- <link href="css/bootstrap.min.css" rel="stylesheet" /> -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -35,32 +36,7 @@
 
   <body>
 
-    <script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '{your-app-id}',
-      cookie     : true,
-      xfbml      : true,
-      version    : '{api-version}'
-    });
 
-    FB.AppEvents.logPageView();
-
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-
-<fb:login-button
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
@@ -93,6 +69,7 @@
             </div>
         </div>
     </nav>
+
 
                     <!-- END TEMPLATE FOR EVERY PAGE-->
 
@@ -154,15 +131,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
   </body>
-  <footer class="page-footer font-small blue fixed-bottom">
 
-    <div class="footer-copyright text-center py-3 text-white bg-dark ">
-
-      <a href="privacypolicy.html" target="_blank"> Privacy Policy</a>
-        <div></div>
-      <a href="terms.html" target="_blank"> Terms of Use</a>
-    </div>
-
-
+  <footer>
+    <div class="text-center">
+    <strong>Follow us on social media!</strong>
+    <ul class="social-icons">
+        <li><a href="https://www.facebook.com/Algebra-Marks-the-Spot-370123656932942/?modal=admin_todo_tour" target=_blank><img src='socialmediaicons/Facebook.png' /></a></li>
+        <li><a href="https://twitter.com/Algmarksthespot" target=_blank><img src='socialmediaicons/Twitter.png' /></a></li>
+        <li><a href="https://www.snapchat.com/add/algmarksthespot" target=_blank><img src='socialmediaicons/Snapchat.png' /></a></li>
+        <li><a href="https://github.com/Seun14/412-project" target=_blank><img src='socialmediaicons/Github.png' /></a></li>
+    </ul>
+  </div>
   </footer>
+
 </html>
