@@ -1,6 +1,6 @@
 
-import java.awt.EventQueue;
-import javax.swing.JFrame;
+import java.awt.*;
+import javax.swing.*;
 public class SwingTimerEx extends JFrame{ 
 
   
@@ -10,14 +10,18 @@ public class SwingTimerEx extends JFrame{
   }
   
   private void initUI() {
-    
-    add(new Board());
-    
+    Board b= new Board();
+    add(b);
     setResizable(false);
+    b.button.addActionListener(b);
     pack();
     
+  
+     
+    
     setTitle("Board Game");
-    setLocationRelativeTo(null);        
+    setLocationRelativeTo(null); 
+   
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
   }
   
