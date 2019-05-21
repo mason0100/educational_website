@@ -14,9 +14,9 @@ import javax.swing.Timer;
 public class Board extends JPanel
   implements ActionListener {
   
-  private final int B_WIDTH = 1485;
+  private final int B_WIDTH = 1600;
   private final int B_HEIGHT = 756;
-  private final int INITIAL_X = 75;
+  private final int INITIAL_X = 60;
   private final int INITIAL_Y = 660;
   private final int DELAY = 25;
   
@@ -42,6 +42,10 @@ public class Board extends JPanel
   Scanner input = new Scanner(System.in);
   JButton button = new JButton("Submit");
   JTextField t = new JTextField(16);
+  boolean move1= true;
+  boolean move2= false;
+  boolean move3= false;
+  boolean move4= false;
   public Board() {
     
     initBoard();
@@ -101,69 +105,65 @@ public class Board extends JPanel
   
   @Override
   public void actionPerformed(ActionEvent e) {
-    System.out.println(attempt + " " +answer + " " + targetSpace + " " + lastSpace + " " );
+    answer= "" +c+ "";
+    System.out.println(attempt + " " +c + " " + targetSpace + " " + x + " " + attempt.equals(answer) + " " +y );
     
-    answer= ""+c+"";
     
-    boolean move1= false;
-    boolean move2= false;
-    boolean move3= false;
-    boolean move4= false;
+    
+ 
     if(answered==false){
       s = e.getActionCommand();
       if(s.equals("Submit")){
-        attempt=t.getText();
-        t.setText(" ");
+        attempt=""+t.getText()+"";
+        t.setText("");
       }
       
      
       
       if(attempt.equals(answer))
+        
         answered=true;
       
     }
     if(answered==true){
-      if(change>=150){
-        lastSpace++;
-        change=0;
-      }
-      if(lastSpace==targetSpace){
+       answered = false;
+     
         targetSpace=rand.nextInt(6)+1;
-        lastSpace=0;
-        change=0;
-        answered = false;
+       
+     
         a = rand.nextInt(10)+1;
         b = rand.nextInt(5)+1;
         c = rand.nextInt(10)+1;
         d = a*b*c;
         prompt = a + " * " + b+"x = " + d + " \n Solve for x";
-      }  
-      if(x==75){
-        move1=true;
-        move4=false;
-      }
-      if(y==80){
-        move2=true;
-        move1=false;
-      }
-      if(x==1445){
-        move3=true;
-        move2=false;
-      }
-      if(y==675){
-        move4=true;
-        move3=false;
-      }
+      
+      
       if(move1==true){
-        y -= 150;
+        y -= targetSpace*150;
         //System.out.println("1");
-        change=change + 150;
+        if(y<=60){
+          if(y<60){
+          x+=(137*((y-60)/150));
+          y=60;
+          }
+          move1=false;
+          move2=true;
+        }
+       
       }
       
       if(move2==true){
-        // System.out.println("2");
-        x += 150;
-        change=change + 150;
+      x += targetSpace*137;
+        //System.out.println("1");
+        if(x>=1430){
+          if(x>1430){
+          y+=(150*((x-1430)/137));
+          y=1430;
+          }
+          move2=false;
+          move3=true;
+        }
+       
       }
       if(move3==true){
         // System.out.println("3");
@@ -177,7 +177,7 @@ public class Board extends JPanel
       }
     }
     
-    //System.out.println(answered);
+    System.out.println(answered);
     
     repaint();
   }
