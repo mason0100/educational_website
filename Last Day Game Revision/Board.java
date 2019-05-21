@@ -31,23 +31,21 @@ public class Board extends JPanel
   int d = a*b*c;
   String prompt = a + " * " + b+"x = " + d + " \n Solve for x";
   String s = "";
-  
-  int lastSpace=0;
+  boolean endOfGame = false;
+  int space=0;
   int targetSpace=rand.nextInt(6)+1;
-  int change=0;
+ 
   String answer="";
   String attempt="";
   boolean answered = false;
-  boolean isInt = false;
+  
   Scanner input = new Scanner(System.in);
   JButton button = new JButton("Submit");
   JTextField t = new JTextField(16);
-  boolean move1= true;
-  boolean move2= false;
-  boolean move3= false;
-  boolean move4= false;
+ 
   int nextRoll = rand.nextInt(6)+1;
   int score=0;
+  int coord[][]= {{75, 575}, {75, 475}, {75, 375}, {75, 275}, {75, 175}, {75, 75}, {175, 75}, {275, 75},{375, 75}, {475, 75}, {575, 75}, {675, 75}, {775,75}, {875, 75}, {975, 75}, {1075, 75}, {1075, 175}, {1075,275}, {1075,375}, {1075,475}, {1075,575},{975,575},{875,575},{775,575},{675,575},{575,575},{475,575},{375,575},{275,575},{175,575},{550,450}};
   public Board() {
     
     initBoard();
@@ -116,7 +114,7 @@ public class Board extends JPanel
     
     
  
-    if(answered==false){
+    if(answered==false && endOfGame==false){
       s = e.getActionCommand();
       if(s.equals("Submit")){
         attempt=""+t.getText()+"";
@@ -132,70 +130,29 @@ public class Board extends JPanel
       else
         score-=1;
     }
-    if(answered==true){
+    if(answered==true && endOfGame==false){
        answered = false;
-     
-        targetSpace=nextRoll;
        
-     
+        targetSpace=nextRoll;
+        space+=targetSpace;
+        
         a = rand.nextInt(10)+1;
         b = rand.nextInt(5)+1;
         c = rand.nextInt(10)+1;
         d = a*b*c;
         prompt = a + " * " + b+"x = " + d + " \n Solve for x";
+        if(space>30){
+          space=30;
+          prompt = "End of Game";
+          endOfGame=true;
+        }
+      x= coord[space][0];
+      y= coord[space][1];
       
-      
-      if(move1==true){
-        y -= targetSpace*100;
-        //System.out.println("1");
-        if(y<=75){
-          if(y<75){
-          x+=(100*((y-75)/100));
-          y=75;
-          }
-          move1=false;
-          move2=true;
-        }
+     
        
       }
-      
-      if(move2==true){
-      x += targetSpace*100;
-        //System.out.println("1");
-        if(x>=1075){
-          if(x>1075){
-          y+=(100*((x-1075)/100));
-          x=1075;
-          }
-          move2=false;
-          move3=true;
-        }
-       
-      }
-      if(move3==true){
-        y += targetSpace*100;
-        //System.out.println("1");
-        if(y>=575){
-          if(x>575){
-          x-=(100*((x-575)/100));
-          y=575;
-          }
-          move3=false;
-          move4=true;
-        }
-       
-      }
-      if(move4==true){
-      x -= targetSpace*100;
-        //System.out.println("1");
-        if(x>=175){
-          x=550;
-          y=450;  
-          move4=false;
-        }
-       
-      }
-    }
+    
     
     nextRoll = rand.nextInt(6)+1;
     
@@ -212,4 +169,5 @@ public class Board extends JPanel
     
     return true;
   }
+
 }
