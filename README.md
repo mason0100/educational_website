@@ -1,5 +1,6 @@
-# 412-project  
-#Sam Bishop, Adeseun Idowu, Mario Abdelsayed, Michael Mason, Brad Henderson
+412-project  
+This is a clone of the original project. The creators of the project are listed below. 
+Sam Bishop, Adeseun Idowu, Mario Abdelsayed, Michael Mason, Brad Henderson
 
 COSC 412 Spring 2019 Project
 February 12, 2019
